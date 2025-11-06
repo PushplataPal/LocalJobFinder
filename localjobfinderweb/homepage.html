@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Job Finder - Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles for Mobile Look */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+        }
+
+        .mobile-container {
+            width: 393px; /* Simulates a common phone width */
+            min-height: 852px; /* Simulates a common phone height */
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden; /* Contains the scrollable content */
+        }
+
+        /* Header (App Bar) */
+        .header {
+            background-color: #673AB7; /* Deep Purple */
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header h1 {
+            font-size: 18px;
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+        }
+        .header i {
+            font-size: 20px;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 20px;
+            overflow-y: auto;
+            max-height: calc(100% - 120px); /* Adjust based on header/footer */
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            padding-left: 40px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="%23999" d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 458.6c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg>') no-repeat 10px center;
+            background-size: 20px;
+        }
+        .location {
+            color: #555;
+            margin-top: 5px;
+        }
+
+        /* Categories */
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 15px 0 10px 0;
+        }
+        .categories {
+            display: flex;
+            overflow-x: scroll;
+            padding-bottom: 10px;
+        }
+        .category-item {
+            text-align: center;
+            margin-right: 20px;
+            min-width: 60px;
+        }
+        .category-icon {
+            background-color: #EDE7F6; /* Light Purple */
+            color: #673AB7;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        /* Featured Worker */
+        .featured-workers {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .worker-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 10px;
+            width: 30%;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .worker-card button {
+            background-color: #673AB7;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        /* Nearby Jobs */
+        .job-listing {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .job-listing:last-child {
+            border-bottom: none;
+        }
+        .job-listing span {
+            font-weight: bold;
+        }
+        .job-listing small {
+            color: #777;
+            display: block;
+            margin-top: 2px;
+        }
+        
+        /* Bottom Navigation */
+        .nav-bar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background-color: white;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .nav-item {
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+        }
+        .nav-item i {
+            font-size: 22px;
+            display: block;
+        }
+        .nav-item.active {
+            color: #673AB7;
+        }
+    </style>
+</head>
+<body>
+    <div class="mobile-container">
+        <div class="header">
+            <i class="fas fa-bars"></i>
+            <h1>Local Job Finder</h1>
+            <i class="fas fa-bell"></i>
+        </div>
+
+        <div class="content">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search for jobs or workers...">
+                <div class="location">
+                    <i class="fas fa-map-marker-alt" style="color:#673AB7;"></i> Select your city/area <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+
+            <div class="section-title">Categories</div>
+            <div class="categories">
+                <div class="category-item">
+                    <div class="category-icon"><i class="fas fa-bolt"></i></div>
+                    Electrician
+                </div>
+                <div class="category-item">
+                    <div class="category-icon"><i class="fas fa-toilet"></i></div>
+                    Plumber
+                </div>
+                <div class="category-item">
+                    <div class="category-icon"><i class="fas fa-hammer"></i></div>
+                    Carpenter
+                </div>
+                <div class="category-item">
+                    <div class="category-icon"><i class="fas fa-car"></i></div>
+                    Driver
+                </div>
+                <div class="category-item">
+                    <div class="category-icon"><i class="fas fa-broom"></i></div>
+                    Cleaner
+                </div>
+                <div class="category-item">
+                    <div class="category-icon"><i class="fas fa-shield-alt"></i></div>
+                    Security guard
+                </div>
+            </div>
+
+            <div class="section-title">Featured Local Worker</div>
+            <div class="featured-workers">
+                <div class="worker-card">
+                    <i class="fas fa-user-circle fa-2x" style="color: #ccc;"></i>
+                    <p>Electrician</p>
+                    <small>Near Vijaynagar</small>
+                    <button>Hire</button>
+                </div>
+                <div class="worker-card">
+                    <i class="fas fa-user-circle fa-2x" style="color: #ccc;"></i>
+                    <p>Cook</p>
+                    <small>Near Bhauti</small>
+                    <button>Hire</button>
+                </div>
+                <div class="worker-card">
+                    <i class="fas fa-user-circle fa-2x" style="color: #ccc;"></i>
+                    <p>House Cleaner</p>
+                    <small>Near Panki</small>
+                    <button>Hire</button>
+                </div>
+            </div>
+
+            <div class="section-title">Nearby Jobs</div>
+            <div class="job-listing">
+                <div>
+                    <span>Need a Plumber</span>
+                    <small>Sector 12</small>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="job-listing">
+                <div>
+                    <span>Delivery Job</span>
+                    <small>Local Store</small>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="job-listing">
+                <div>
+                    <span>Need a Electrician</span>
+                    <small>Local Shop</small>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+
+        <div class="nav-bar">
+            <div class="nav-item active">
+                <i class="fas fa-home"></i> Home
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-bookmark"></i> Saved
+            </div>
+            <div class="nav-item">
+                <i class="fas fa-user"></i> Profile
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script src="app.js"></script>
+</html>

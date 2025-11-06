@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Job Finder</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(180deg, #007bff, #008cff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #007bff;
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2em;
+      text-align: center;
+    }
+
+    p {
+      margin-top: 10px;
+      font-size: 1em;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">💼</div>
+  <h1>Local Job Finder</h1>
+  <p>Find Jobs Near You Easily</p>
+
+  <script>
+    // Redirect to sign-in page after 3 seconds
+    setTimeout(() => {
+      window.location.href = "signin.html";
+    }, 3000);
+  </script>
+</body>
+<script src="app.js"></script>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In - Local Job Finder</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <h1 class="app-title">Local Job Finder</h1>
+
+      <div class="tabs">
+        <button class="active">Sign In</button>
+        <button onclick="window.location.href='signup.html'">Sign Up</button>
+      </div>
+
+      <p class="subtitle">Let’s get started by filling out the form below.</p>
+<form id="signinForm">
+  <input type="email" id="email" placeholder="Email" required />
+  <input type="password" id="password" placeholder="Password" required />
+
+  <button type="submit" class="primary-btn">Sign In</button>
+
+  <a href="#" class="forgot-link">Forgot Password?</a>
+
+  <div class="divider">Or sign in with</div>
+
+  <button type="button" class="social-btn google">Continue with Google</button>
+  <button type="button" class="social-btn apple">Continue with Apple</button>
+
+  <p>Don't have an account? <a id="signup-link" href="#">Sign up here</a></p>
+</form>
+
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

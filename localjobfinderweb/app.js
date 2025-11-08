@@ -19,7 +19,6 @@ function showHome() {
     </section>`;
 }
 
-
 function showPostJob() {
   document.getElementById("content").innerHTML = `
     <section>

@@ -1,0 +1,118 @@
+/* FULL MOBILE SCREEN CONTAINER */
+.mobile-container {
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  background: #fff;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+
+/* TOP PURPLE HEADER */
+.header {
+  background: #673AB7;
+  padding: 15px;
+  color: white;
+  text-align: center;
+}
+
+/* SCROLL CONTENT */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+/* SEARCH BOX */
+.search-box {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+/* SECTION TITLES */
+.section-title {
+  font-size: 18px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* CATEGORY LIST */
+.categories {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.category-item {
+  min-width: 90px;
+  height: 90px;
+  background: #EDE7F6;
+  color: #673AB7;
+  border-radius: 12px;
+  margin-right: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.category-item svg {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+/* WORKER BOXES */
+.worker-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.worker-box {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.worker-box button {
+  background: #673AB7;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+/* BOTTOM NAV BAR */
+.bottom-nav {
+  height: 60px;
+  background: white;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav-item {
+  text-align: center;
+  color: #777;
+  font-size: 13px;
+}
+
+.nav-item svg {
+  font-size: 22px;
+}
+
+.nav-item.active {
+  color: #673AB7;
+}

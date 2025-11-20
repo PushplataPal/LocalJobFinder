@@ -1,0 +1,32 @@
+/* MAIN NAVBAR */
+.navbar {
+  height: 55px;           /* FIXED HEIGHT (Mobile Style) */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+  background: #007bff;    /* blue */
+  color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* NAVBAR TITLE */
+.navbar-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* NAV LINKS */
+.nav-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}

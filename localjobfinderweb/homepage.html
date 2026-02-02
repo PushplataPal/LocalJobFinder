@@ -276,3 +276,36 @@
 </body>
 <script src="app.js"></script>
 </html>
+<script>
+    // Page load par token check
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        alert("Please login first");
+        window.location.href = "signin.html";
+    }
+</script>
+
+<script>
+    async function loadUser() {
+        const token = localStorage.getItem("token");
+
+        let res = await fetch("http://localhost:5000/api/profile", {
+            headers: {
+                "Authorization": token
+            }
+        });
+
+        let data = await res.json();
+
+        if (!data.success) {
+            alert("Session expired, login again");
+            window.location.href = "signin.html";
+        }
+
+        document.getElementById("username").innerText = data.user.name;
+    }
+
+    loadUser();
+</script>
+<h2>Welcome, <span id="username"></span></h2>

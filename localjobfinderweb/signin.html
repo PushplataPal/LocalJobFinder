@@ -38,3 +38,26 @@
   <script src="app.js"></script>
 </body>
 </html>
+<script>
+    async function loginUser() {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+        let result = await fetch("http://localhost:5000/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        });
+
+        let res = await result.json();
+
+        alert(res.message);
+
+        if (res.success) {
+            localStorage.setItem("token", res.token);
+            window.location.href = "homepage.html"; 
+        }
+    }
+</script>
+<button onclick="loginUser()">Sign In</button>
+

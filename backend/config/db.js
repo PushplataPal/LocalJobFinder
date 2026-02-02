@@ -1,16 +1,13 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/localjobfinder", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("✅ MongoDB Connected");
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB connected");
   } catch (error) {
-    console.error("❌ Database connection failed:", error);
+    console.log("MongoDB connection failed :", error);
     process.exit(1);
   }
 };
 
-module.exports = connectDB;
+export default connectDB;

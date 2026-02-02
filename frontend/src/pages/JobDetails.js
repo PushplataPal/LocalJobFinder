@@ -1,48 +1,41 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./JobDetails.css";
+import { Container, AppBar, Toolbar, Typography, Box, Button } from "@mui/material";
 
-function JobDetails() {
-  const location = useLocation();
+export default function JobDetails() {
+  const { state: job } = useLocation();
   const navigate = useNavigate();
 
-  // job data from Jobs.js
-  const job = location.state;
-
   if (!job) {
-    return <h2>No Job Selected</h2>;
+    return <Container sx={{ py: 6 }}>No job selected.</Container>;
   }
 
   return (
-    <div className="jobdetails-container">
+    <Box sx={{ bgcolor: "#f5f7fb", minHeight: "100vh" }}>
+      <AppBar position="static" color="primary">
+        <Toolbar>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>Job Details</Typography>
+        </Toolbar>
+      </AppBar>
 
-      <div className="jobdetails-header">
-        <button className="back-btn" onClick={() => navigate(-1)}>←</button>
-        <h2>Job Details</h2>
-      </div>
+      <Container maxWidth="sm" sx={{ py: 4 }}>
+        <Typography variant="h5" sx={{ mb: 1 }}>{job.title}</Typography>
+        <Typography variant="subtitle1" color="text.secondary">{job.worker} — {job.location}</Typography>
 
-      <div className="jobdetails-card">
-        <div className="jobdetails-icon">{job.icon}</div>
+        <Box sx={{ mt: 3 }}>
+          <Typography><strong>Experience:</strong> {job.experience}</Typography>
+          <Typography><strong>Charges:</strong> {job.charges}</Typography>
+          <Typography><strong>Availability:</strong> {job.availability}</Typography>
+          <Typography><strong>Contact:</strong> {job.phone}</Typography>
+        </Box>
 
-        <h3>{job.title}</h3>
-        <p className="location">{job.location}</p>
-
-        <p className="desc">
-          This job requires an experienced and reliable worker. You will be
-          responsible for completing the tasks on time. Payment will be made
-          after work completion.
-        </p>
-
-        <p className="info"><strong>Salary:</strong> ₹8,000 – ₹15,000 / month</p>
-        <p className="info"><strong>Work Type:</strong> Full Time / Part Time</p>
-        <p className="info"><strong>Contact:</strong> 9876543210</p>
-
-        <button className="apply-main-btn">
-          Apply Now
-        </button>
-      </div>
-    </div>
+        <Box sx={{ mt: 4, display: "flex", gap: 2 }}>
+          <Button variant="contained" color="primary" onClick={() => window.open(`tel:${job.phone}`)}>Call</Button>
+          <Button variant="outlined" onClick={() => alert("Booking flow - connect backend")}>Book Now</Button>
+          <Button variant="text" onClick={() => navigate(-1)}>Back</Button>
+        </Box>
+      </Container>
+    </Box>
   );
 }
 
-export default JobDetails;

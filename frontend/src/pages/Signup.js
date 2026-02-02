@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./SigninSignup.css";
 
 function Signup() {
@@ -6,10 +7,25 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    console.log("Signup Details:", { name, email, mobile, password });
+
+    try {
+      const res = await axios.post("http://localhost:5000/api/auth/signup", {
+        name,
+        email,
+        mobile,
+        password,
+      });
+
+      setMessage(res.data.message || "Signup successful! 🎉");
+    } catch (error) {
+      setMessage(
+        error.response?.data?.message || "Signup failed! Try again ❌"
+      );
+    }
   };
 
   return (
@@ -17,7 +33,7 @@ function Signup() {
       <h2 className="auth-title">Create Account</h2>
 
       <form onSubmit={handleSignup} className="auth-form">
-        
+
         <label>Full Name</label>
         <input
           type="text"
@@ -56,6 +72,8 @@ function Signup() {
 
         <button type="submit" className="auth-btn">Sign Up</button>
       </form>
+
+      {message && <p className="auth-msg">{message}</p>}
 
       <p className="switch-text">
         Already have an account? <a href="/signin">Login</a>
